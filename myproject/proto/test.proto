@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package main;
+
+
+import "google/api/annotations.proto";
+
+option go_package = "./proto";
+
+
+service testapi{    
+
+    rpc getdetails(UserRequest) returns(UserResponse){
+
+         option (google.api.http)={
+
+            post: "/getdetails"
+            body: "*"
+         }; 
+   };
+}
+
+message UserRequest{
+    int32 id=1;
+}
+
+message UserResponse{
+
+    string name=1;
+}
